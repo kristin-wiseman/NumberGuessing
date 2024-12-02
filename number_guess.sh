@@ -11,7 +11,7 @@ USER=$($PSQL "SELECT games_played, best_game FROM users WHERE username = '$USERN
 
 # if no user found
 if [[ -z $USER ]]; then
-  echo "Welcome $USERNAME! It looks like this is your first time here."
+  echo "Welcome, $USERNAME! It looks like this is your first time here."
   ADD_USER=$($PSQL "INSERT INTO users(username) VALUES('$USERNAME');")
 else
   echo "$USER" | while read GAMES_PLAYED BAR BEST_GAME
@@ -43,3 +43,5 @@ done
 
 NUM_GUESSES=$(( NUM_GUESSES + 1 ))
 echo "You guessed it in $NUM_GUESSES tries. The secret number was $NUMBER. Nice job!"
+
+UPDATE_USER=$($PSQL "UPDATE users SET games_played = games_played + 1, best_game = $NUM_GUESSES WHERE username = '$USERNAME';")
