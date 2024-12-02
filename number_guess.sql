@@ -60,9 +60,6 @@ ALTER TABLE public.users OWNER TO freecodecamp;
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.users VALUES ('kmw', 0, NULL);
-INSERT INTO public.users VALUES ('user_1733103862334', 0, NULL);
-INSERT INTO public.users VALUES ('user_1733103862333', 0, NULL);
 
 
 --
