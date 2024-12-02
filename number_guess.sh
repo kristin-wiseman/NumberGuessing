@@ -30,7 +30,16 @@ while [[ ! $GUESS =~ ^[0-9]+$ ]]; do
   read GUESS
 done
 
-if [[ "$GUESS" -eq "$NUMBER" ]]; then
+while [ ! "$GUESS" -eq "$NUMBER" ]; do
   NUM_GUESSES=$(( NUM_GUESSES + 1 ))
-  echo "You guessed it in $NUM_GUESSES tries. The secret number was $NUMBER. Nice job! "
-fi
+  if [[ "$GUESS" -gt "$NUMBER" ]]; then
+    echo "It's lower than that, guess again:"
+    read GUESS
+  else
+    echo "It's higher than that, guess again:"
+    read GUESS
+  fi
+done
+
+NUM_GUESSES=$(( NUM_GUESSES + 1 ))
+echo "You guessed it in $NUM_GUESSES tries. The secret number was $NUMBER. Nice job!"
